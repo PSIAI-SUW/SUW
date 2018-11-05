@@ -4,3 +4,4 @@ Authors:
 <br>Adam Kanigowski
 <br>Jakub Piskorowski
 <br>Jakub Janik
+<br>Krzysztof Kuzak
