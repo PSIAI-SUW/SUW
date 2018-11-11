@@ -1,41 +1,55 @@
 body, html {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
 }
-.container {
-    width: 50%;
-    min-height: 100vh;
-    margin: 0 auto;
-    position: relative;
+a {
+    text-decoration: none;
+    color: black;
 }
-footer {
-    position: absolute;
-    bottom: 0;
+.logo {
+    margin-top: 10px;
+    height: 50px;
 }
-
-#stats{
-	display: block;
-	
+.primary-button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    color: white;
+    background-color: #1a1f9d;
+    margin: 10px 20px;
+    text-transform: uppercase;
 }
-
-._png{
-	float: left;
-	width: 5vh;
-	margin: 3px;
+.primary-button:hover {
+    color: white;
+    background-color: #4c4fa0;
+    transition: .4s;
 }
-
-.stat_count{
-	font-size: 22pt;
-	float: left;
-	padding: 5px;
-	text-align: center;
-	margin: 3px;
+.primary-form > label {
+    font-size: 1.6em;
 }
-
-.download{
-	width: 6vh;
-	float: left;
-	text-align: center;
-	margin: 3px;
+.subtitle {
+    color: black;
+}
+.title+.subtitle {
+    margin-top: 0;
+}
+.list-items {
+    margin-bottom: 30px;
+}
+.list-items > .items {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+}
+.items > a {
+    color: white;
+}
+.fa-cog {
+    margin-top: 10px;
+}
+.fa-cog:hover {
+    transition: .4s;
+    color: #333333;
 }
