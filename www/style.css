@@ -1,4 +1,5 @@
 body, html {
+    color: black;
 }
 a {
     text-decoration: none;
@@ -52,4 +53,7 @@ a {
 .fa-cog:hover {
     transition: .4s;
     color: #333333;
+}
+.fa-chevron-right {
+    margin-left: 3px;
 }
