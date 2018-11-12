@@ -1,10 +1,11 @@
+<?php include 'stats.php'; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
 
 <title>System Udostępniania Wykładów</title>
 <?php include 'includes/head-meta.html'; ?>
-<?php include 'stats.php'; ?>
 
 </head>
 
