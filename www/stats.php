@@ -1,7 +1,7 @@
 <?php
 
 /* Połączenie z bazą danych */
-$dbHost = 'mysql.cba.pl';
+$dbHost = 'localhost';
 $dbUser = 'BazaISUW';
 $dbPassword = 'BazaISUW1';
 $dbName = 'jakub9616';
@@ -34,7 +34,7 @@ $download_month = $mysqli->query("SELECT COUNT(ID_Pobieranie_Pliku) FROM Pobrani
 $download_month2 = mysqli_fetch_array($download_month, MYSQLI_NUM);
 
 /* Zapytanie SQL zliczające pliki z semestru */
-$download_semestr = $mysqli->query("SELECT COUNT(ID_Pobieranie_Pliku) FROM Pobranie_Pliku");
+$download_semestr = $mysqli->query("SELECT COUNT(ID_Pobieranie_Pliku) FROM Pobranie_Pliku WHERE YEAR(data_dodania)=$year AND MONTH(data_dodania) IN (10,11,12,01,02)");
 $download_semestr2 = mysqli_fetch_array($download_semestr, MYSQLI_NUM);
 
 ?>
