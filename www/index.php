@@ -1,5 +1,4 @@
 <?php include 'stats.php'; ?>
-
 <!DOCTYPE html>
 <html>
 <head>
