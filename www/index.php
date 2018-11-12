@@ -4,6 +4,7 @@
 
 <title>System Udostępniania Wykładów</title>
 <?php include 'includes/head-meta.html'; ?>
+<?php include 'stats.php'; ?>
 
 </head>
 
@@ -36,14 +37,14 @@
                     <h2 class="title">Statystyki</h2>
                     <h3 class="subtitle"><i class="fa fa-users fa-fw"></i>Liczba użytkowników</h3>
                     <ul class="list-items">
-                        <li class="items">Razem<br>26</li>
+                        <li class="items">Razem<br><?php $row[0] ?></li>
                     </ul>
                     <h3 class="subtitle"><i class="fa fa-download fa-fw"></i>Pobrania</h3>
                     <ul class="list-items">
-                        <li class="items">Dzień<br>36</li>
-                        <li class="items">Tydzień<br>36</li>
-                        <li class="items">Miesiąc<br>36</li>
-                        <li class="items">Semestr<br>36</li>
+                        <li class="items">Dzień<br><?php $download_today2[0] ?></li>
+                        <li class="items">Tydzień<br><?php $download_week2[0] ?></li>
+                        <li class="items">Miesiąc<br><?php $download_month2[0] ?></li>
+                        <li class="items">Semestr<br><?php $download_semestr2[0] ?></li>
                     </ul>
                 </div>
             </div>
