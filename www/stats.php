@@ -15,7 +15,7 @@ if(mysqli_connect_errno())
 /* Zapytanie SQL zliczające liczbę użytkowników */
 $results = $mysqli->query("SELECT COUNT(rola) FROM uzytkownicy WHERE rola='student'");
 $row = mysqli_fetch_array($results, MYSQLI_NUM);
-printf ($row[0]);  
+print $row[0];  
 mysqli_free_result($results);
 
 /* Do zrobienia zliczanie plików dla danego dnia tygodnia miesiąca semestru
