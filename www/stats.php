@@ -21,36 +21,21 @@ if(mysqli_connect_errno())
 /* Zapytanie SQL zliczające liczbę użytkowników */
 $results = $mysqli->query("SELECT COUNT(rola) FROM uzytkownicy WHERE rola='student'");
 $row = mysqli_fetch_array($results, MYSQLI_NUM);
-print $row[0];  
-mysqli_free_result($results);
 
 /* Zapytanie SQL zliczające pliki z "dzisiaj" */
-$download_today = $mysqli->query("SELECT COUNT(data_dodania) FROM dodanie_pliku WHERE data_dodania=$today");
+$download_today = $mysqli->query("SELECT COUNT(data_dodania) FROM dodanie_pliku WHERE data_dodania='$today'");
 $download_today2 = mysqli_fetch_array($download_today, MYSQLI_NUM);
-print $download_today2[0];  
-mysqli_free_result($download_today);
 
 /* Zapytanie SQL zliczające pliki z tygodnia */
 $download_week = $mysqli->query("SELECT COUNT(data_dodania) FROM dodanie_pliku WHERE data_dodania >= $today AND data_dodania <= $week");
 $download_week2 = mysqli_fetch_array($download_week, MYSQLI_NUM);
-print $download_week2[0];  
-mysqli_free_result($download_week);
 
 /* Zapytanie SQL zliczające pliki z miesiaca */
 $download_month = $mysqli->query("SELECT COUNT(data_dodania) FROM dodanie_pliku WHERE data_dodania >= $today AND data_dodania <= $month");
 $download_month2 = mysqli_fetch_array($download_month, MYSQLI_NUM);
-print $download_month2[0];  
-mysqli_free_result($download_month);
 
 /* Zapytanie SQL zliczające pliki z semestru */
 $download_semestr = $mysqli->query("SELECT COUNT(data_dodania) FROM dodanie_pliku WHERE data_dodania >= $semestr_start AND data_dodania <= $semestr_end");
 $download_semestr2 = mysqli_fetch_array($download_semestr, MYSQLI_NUM);
-print $download_semestr2[0];  
-mysqli_free_result($download_semestr);
-
-
-/* Do zrobienia zliczanie plików dla danego dnia tygodnia miesiąca semestru
-
- Na koniec trzeba zaimplementować kod do pliku index.php oraz pod bazę danych */
 
 ?>
