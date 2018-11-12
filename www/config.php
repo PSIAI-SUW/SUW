@@ -2,17 +2,17 @@
 ob_start();
 session_start();
 
-//set timezone
+
 date_default_timezone_set('Europe/Warsaw');
 
-//database credentials
-define('DBHOST','127.0.0.1');
-define('DBUSER','root');
-define('DBPASS','');
-define('DBNAME','suw');
+
+define('DBHOST','mysql.cba.pl');
+define('DBUSER','BazaISUW');
+define('DBPASS','BazaISUW1');
+define('DBNAME','jakub9616');
 
 
-	//create PDO connection
+	
 	$db = new PDO("mysql:host=".DBHOST.";dbname=".DBNAME, DBUSER, DBPASS);
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
