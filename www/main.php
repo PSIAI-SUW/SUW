@@ -17,7 +17,7 @@
             </div>
             <div class="column is-6">
             <a href="settings.php" id="settingsButton"><i class="fa fa-cog fa-3x" title="Ustawienia"></i></a>
-            <a href="login.php" id="logoutButton" class="primary-button">Wyloguj</a>
+            <a href="logout.php" id="logoutButton" class="primary-button">Wyloguj</a>
             </div>
         </div>
     </div>

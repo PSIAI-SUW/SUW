@@ -1,3 +1,25 @@
+<?php require_once('config.php'); 
+
+if( $user->is_logged_in() ){ header('Location: main.php'); }
+
+if(isset($_POST['login'])){
+
+	$login = $_POST['nrIndex'];
+	$password = $_POST['userPassword'];
+	
+	if($user->login($login,$password)){ 
+		$_SESSION['login'] = $login;
+		header('Location: main.php');
+		exit;
+	
+	} else {
+		$error[] = 'Błędne dane logowania';
+	}
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +50,15 @@
             <div class="columns">
                 <div class="column is-6">
                     <h2 class="title">Logowanie</h2>
+					
+						<?php				
+							if(isset($error)){
+							foreach($error as $error){
+								echo $error;
+								}
+							}
+						?>
+					
                     <form action="login.php" method="post" class="primary-form">
                         <label for="nrIndex">Nr Indeksu: </label>
                         <input type="text" name="nrIndex" class="input is-large">
