@@ -10,8 +10,6 @@ $today = date('d');
 $week = date('W');
 $month = date('m');
 $year = date('Y');
-$semestr_start = date("Y-m-d", strtotime('2018-10-01'));
-$semestr_end = date("Y-m-d", strtotime('2019-01-20'));
 
 $mysqli = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 if(mysqli_connect_errno())
