@@ -6,7 +6,7 @@ session_start();
 date_default_timezone_set('Europe/Warsaw');
 
 
-define('DBHOST','mysql.cba.pl');
+define('DBHOST','localhost');
 define('DBUSER','BazaISUW');
 define('DBPASS','BazaISUW1');
 define('DBNAME','jakub9616');
