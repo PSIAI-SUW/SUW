@@ -28,7 +28,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-6">
-                    <h2 class="title">Pane użytkownika</h2>
+                    <h2 class="title">Dane użytkownika</h2>
                     
                 </div>
                 <div class="column is-6">
