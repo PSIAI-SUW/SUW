@@ -1,3 +1,4 @@
+<?php require_once 'config.php' ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,8 +29,13 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-6">
-                    <h2 class="title">Dane użytkownika</h2>
-                    
+                    <h2 class="title">Panel administratora</h2>
+                    <?php
+                        $rusers = $db->query("SELECT login FROM users")->fetchAll();
+                        foreach ($rusers as $row) {
+                            echo $row['login']."<br>";
+                        }
+                    ?>
                 </div>
                 <div class="column is-6">
                     
