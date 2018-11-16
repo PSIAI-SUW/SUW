@@ -30,10 +30,11 @@
             <div class="columns">
                 <div class="column is-6">
                     <h2 class="title">Panel administratora</h2>
+                    table
                     <?php
-                        $rusers = $db->query("SELECT login FROM users")->fetchAll();
-                        foreach ($rusers as $row) {
-                            echo $row['login']."<br>";
+                        $users = $db->query("SELECT * FROM users")->fetchAll(PDO::FETCH_OBJ);
+                        foreach ($users as $row) {
+                            echo $row->login."<br>";
                         }
                     ?>
                 </div>
