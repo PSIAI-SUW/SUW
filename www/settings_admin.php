@@ -30,13 +30,29 @@
             <div class="columns">
                 <div class="column is-6">
                     <h2 class="title">Panel administratora</h2>
-                    table
-                    <?php
-                        $users = $db->query("SELECT * FROM users")->fetchAll(PDO::FETCH_OBJ);
-                        foreach ($users as $row) {
-                            echo $row->login."<br>";
-                        }
-                    ?>
+                    <table class="table is-hoverable is-striped">
+                        <thead>
+                           <tr>
+                                <th>Login</th>
+                                <th>Status</th>
+                                <th>Operacja</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <?php
+                            $users = $db->query("SELECT * FROM users")->fetchAll(PDO::FETCH_OBJ);
+                            foreach ($users as $row) {
+                                echo "<tr>";
+                                echo "<td>".$row->login."</td>";
+                                echo "<td>".$row->active."</td>";
+                                echo "<td><div class=\"control\"><div class=\"select\"><select name=\"activeButton\"><option>Aktywuj</option>
+                                <option>Dezaktywuj</option>
+                                <option>Usuń</option></select></div></div></td>";
+                                echo "<td><input type=\"submit\" value=\"Zatwierdź\" name=\"insertActive\" class=\"primary-button\"></td>";
+                                echo "</tr>";
+                            }
+                        ?>
+                    </table>
                 </div>
                 <div class="column is-6">
                     
