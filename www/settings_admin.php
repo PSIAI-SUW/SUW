@@ -17,7 +17,7 @@
             <?php include 'includes/logo.html'; ?>
             </div>
             <div class="column is-6">
-            <a href="settings.php" id="settingsButton"><i class="fa fa-cog fa-3x" title="Ustawienia"></i></a>
+            <a href="settings_admin.php" id="settingsButton"><i class="fa fa-cog fa-3x" title="Ustawienia"></i></a>
             <a href="logout.php" id="logoutButton" class="primary-button">Wyloguj</a>
             </div>
         </div>
@@ -45,10 +45,10 @@
                                 echo "<tr>";
                                 echo "<td>".$row->login."</td>";
                                 echo "<td>".$row->active."</td>";
-                                echo "<td><div class=\"control\"><div class=\"select\"><select name=\"activeButton\"><option>Aktywuj</option>
+                                echo "<td><form action=\"settings_admin.php\" method=\"post\"><div class=\"control\"><div class=\"select\"><select name=\"activeButton\"><option>Aktywuj</option>
                                 <option>Dezaktywuj</option>
                                 <option>Usuń</option></select></div></div></td>";
-                                echo "<td><input type=\"submit\" value=\"Zatwierdź\" name=\"insertActive\" class=\"primary-button\"></td>";
+                                echo "<td><input type=\"submit\" value=\"Zatwierdź\" name=\"insertActive\" class=\"primary-button\"></form></td>";
                                 echo "</tr>";
                             }
                         ?>
