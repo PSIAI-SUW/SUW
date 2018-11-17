@@ -23,7 +23,7 @@ if(isset($_POST['register'])){
 	if(!isset($error)){
 		$hashedpassword = md5($_POST['userPassword']);
 
-			$stmt = $db->prepare('INSERT INTO users (login,password,type_account) VALUES (:nrIndex, :userPassword, "user")');
+			$stmt = $db->prepare('INSERT INTO users (login,password,type_account,active) VALUES (:nrIndex, :userPassword, "user", "nieaktyny")');
 			$stmt->execute(array(
 				':nrIndex' => $_POST['nrIndex'],
 				':userPassword' => $hashedpassword
