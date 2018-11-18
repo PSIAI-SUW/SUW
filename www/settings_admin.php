@@ -1,4 +1,4 @@
-<?php require_once 'config.php' ?>
+<?php require_once 'config.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,25 +35,37 @@
                            <tr>
                                 <th>Login</th>
                                 <th>Status</th>
-                                <th>Operacja</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <?php
-                            $users = $db->query("SELECT * FROM users")->fetchAll(PDO::FETCH_OBJ);
-                            foreach ($users as $row) {
+                            $users = $db->query("SELECT * FROM users WHERE type_account = 'user'")->fetchAll(PDO::FETCH_OBJ);
+                            foreach ($users as $row)
+                            {
                                 echo "<tr>";
                                 echo "<td>".$row->login."</td>";
                                 echo "<td>".$row->active."</td>";
-                                echo "<td><form action=\"settings_admin.php\" method=\"post\"><div class=\"control\"><div class=\"select\"><select name=\"activeButton\"><option>Aktywuj</option>
-                                <option>Dezaktywuj</option>
-                                <option>Usuń</option></select></div></div></td>";
-                                echo "<td><input type=\"submit\" value=\"Zatwierdź\" name=\"insertActive\" class=\"primary-button\"></form></td>";
                                 echo "</tr>";
                             }
                         ?>
                     </table>
+                    <form action="forms/activate.php" method="post" class="primary-form">
+                            <label for="activate">Aktywacja konta</label>
+                            <input type="text" name="activate" placeholder="Wpisz login" class="input is-large">
+                            <input type="submit" value="Aktywuj" name="activateButton" class="primary-button">
+                    </form>
+                    <form action="forms/deactivate.php" method="post" class="primary-form">
+                            <label for="deactivate">Dezaktywacja konta</label>
+                            <input type="text" name="deactivate" placeholder="Wpisz login" class="input is-large">
+                            <input type="submit" value="Dezaktywuj" name="deactivateButton" class="primary-button">
+                    </form>
+                    <form action="forms/delete.php" method="post" class="primary-form">
+                            <label for="delete">Usunięcie konta</label>
+                            <input type="text" name="delete" placeholder="Wpisz login" class="input is-large">
+                            <input type="submit" value="Usuń" name="deleteButton" class="primary-button">
+                    </form>
+                    
                 </div>
+                
                 <div class="column is-6">
                     
                 </div>
