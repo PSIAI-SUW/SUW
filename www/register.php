@@ -31,7 +31,7 @@ if(isset($_POST['register'])){
 
 			$id = $db->lastInsertId('ID_USER');
 
-			header('Location: login.php');
+			header('Location: login.php?log=1');
 			exit;
 	}
 }
