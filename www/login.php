@@ -7,12 +7,15 @@ if(isset($_POST['login'])){
 	$login = $_POST['nrIndex'];
 	$password = $_POST['userPassword'];
 	
-	if($user->login($login,$password)){ 
+	if($user->login($login,$password))
+	{ 
 		$_SESSION['login'] = $login;
 		header('Location: main.php');
 		exit;
 	
-	} else {
+	} 
+	else 
+	{
 		$error[] = 'Błędne dane logowania';
 	}
 }
@@ -49,12 +52,22 @@ if(isset($_POST['login'])){
         <div class="container">
             <div class="columns">
                 <div class="column is-6">
+					<?php
+						if (isset($_GET['error'])){
+							if ($_GET['error'] == 2 ) echo $error[] = "Zaloguj się do swojego konta"; 
+						}
+						
+						if (isset($_GET['log'])){
+							if ($_GET['log'] == 1 ) echo $log[] = "Twoje konto zostało zarejestrowane. Teraz możesz się zalogować!"; 
+						}
+					
+					?>
                     <h2 class="title">Logowanie</h2>
 					
 						<?php				
 							if(isset($error)){
-							foreach($error as $error){
-								echo $error;
+							foreach($error as $error2){
+								echo $error2;
 								}
 							}
 						?>

@@ -19,30 +19,21 @@
             <div class="column is-6">
 			
 			
-				<a href="<?php 
+				<a href="<?php 	
 				if( $user->is_logged_in() ){
-					//$sql = $db->query("SELECT type_account FROM users");
-					//echo  $sql;
-				if ( $stmt = $db->prepare("SELECT type_account FROM users WHERE type_account = 'admin'") )
-				{ 
-					echo 'settings_admin.php';
-					//header('Location: settings_admin.php');
-				}
-				else
-				{
-					echo 'index.php';
-				}
-				
-				
-				}?>" id="settingsButton"><i class="fa fa-cog fa-3x" title="Ustawienia"></i></a>
-				
-				
-				<!--   <a href="settings_user.php" id="settingsButton"><i class="fa fa-cog fa-3x" title="Ustawienia"></i></a>    -->
-				
-				
-				
-				
 			
+					if ($_SESSION["type_account"] == "admin") 
+					{
+						echo "settings_admin.php";
+					}
+					else
+					{
+						echo "settings_user.php";
+					}
+				}
+				?>" id="settingsButton"><i class="fa fa-cog fa-3x" title="Ustawienia"></i></a>
+				
+
             <a href="logout.php" id="logoutButton" class="primary-button">Wyloguj</a>
             </div>
         </div>
@@ -52,6 +43,11 @@
 <section class="section is-medium">
     <main>
         <div class="container">
+			<?php
+				if (isset($_GET['error'])){
+					if ($_GET['error'] == 1 ) echo $error[] = "Brak uprawnień administratora";			
+				}
+			?>
             <div class="columns">
                 <div class="column is-6">
                     <h2 class="title">Kursy</h2>

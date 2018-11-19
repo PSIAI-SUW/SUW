@@ -10,9 +10,8 @@ class User{
 
 	private function get_user_hash($login){
 
-			$stmt = $this->_db->prepare("SELECT password,login,ID_USER FROM users WHERE login=:nrIndex");
+			$stmt = $this->_db->prepare("SELECT password,login,ID_USER,type_account FROM users WHERE login=:nrIndex");
 			$stmt->execute(array('nrIndex' => $login));
-
 			return $stmt->fetch();
 	}
 
@@ -27,6 +26,7 @@ class User{
 		    $_SESSION['loggedin'] = true;
 		    $_SESSION['login'] = $row['login'];
 		    $_SESSION['ID_USER'] = $row['ID_USER'];
+			$_SESSION['type_account'] = $row['type_account'];
 		    return true;
 		}
 	}
