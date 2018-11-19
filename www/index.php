@@ -1,4 +1,11 @@
-<?php include 'stats.php'; ?>
+<?php 
+	require_once('config.php');
+	include 'stats.php'; 
+	
+	if( $user->is_logged_in() ){
+		header('Location: main.php');
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
