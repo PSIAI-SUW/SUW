@@ -73,6 +73,13 @@ Dodaj plik:<br/>
 <input type="submit" value="Wyślij plik" /> 
 </form> 
 </div>
+<div>
+<form method="post" action="delete.php">
+Usuń plik:<br/>
+<input type="text" name="filename"> - Nazwa pliku(wraz z rozszerzeniem)<br>
+<input type="submit" value="OK!">
+</form>
+</div>
                 <div class="column is-6">
                     <h2 class="title">Wykłady</h2>
                     <ul class="list-items">
