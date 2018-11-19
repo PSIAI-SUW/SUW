@@ -1,4 +1,12 @@
-<?php require_once('config.php'); ?>
+<?php require_once('config.php'); 
+
+	if( $user->is_logged_in() ){}
+	else
+	{		
+		header('Location: index.php');
+	}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
