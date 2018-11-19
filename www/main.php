@@ -60,6 +60,19 @@
                         <li class="items"><a href="">Kurs 6</a></li>
                     </ul>
                 </div>
+<?php
+$katalog    = 'upload/';
+$pliki = scandir($katalog);
+foreach($pliki as $plik) echo '<p>'.$plik.'</p>';
+?>
+<div> 
+<form enctype="multipart/form-data" action="send.php" method="POST"> 
+Dodaj plik:<br/>
+<input type="hidden" name="MAX_FILE_SIZE" value="500000" /> 
+<input name="plik" type="file" /> 
+<input type="submit" value="Wyślij plik" /> 
+</form> 
+</div>
                 <div class="column is-6">
                     <h2 class="title">Wykłady</h2>
                     <ul class="list-items">
