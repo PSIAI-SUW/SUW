@@ -38,20 +38,17 @@ else
 <section class="section is-medium">
     <main>
         <div class="container">
-					<?php
-						if (isset($_GET['not'])){
-							if ($_GET['not'] == 1 ) echo $not[] = "Podane konto zostało usunięte!"; 
-						}
-						if (isset($_GET['not'])){
-							if ($_GET['not'] == 2 ) echo $not[] = "Podane konto zostało aktywowane!"; 
-						}
-						if (isset($_GET['not'])){
-							if ($_GET['not'] == 3 ) echo $not[] = "Podane konto zostało deaktywowane!"; 
-						}
-					
-					?>
             <div class="columns">
                 <div class="column is-6">
+                    <?php
+						if (isset($_GET['not'])){
+                            echo "<div class=\"notification is-success\">";
+							if ($_GET['not'] == 1 ) echo $not[] = "Podane konto zostało usunięte!";
+							if ($_GET['not'] == 2 ) echo $not[] = "Podane konto zostało aktywowane!"; 
+							if ($_GET['not'] == 3 ) echo $not[] = "Podane konto zostało deaktywowane!"; 
+                            echo "</div>";
+                        }
+					?>
                     <h2 class="title">Panel administratora</h2>
                     <table class="table is-hoverable is-striped">
                         <thead>

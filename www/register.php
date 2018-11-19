@@ -67,17 +67,17 @@ if(isset($_POST['register'])){
         <div class="container">
             <div class="columns">
                 <div class="column is-6">
-                    <h2 class="title">Rejestracja</h2>
-					
-					<?php
+                    <?php
 						if(isset($error)){
 							foreach($error as $err){
+                            echo "<div class=\"notification is-danger\">";
 							echo '<p>'.$err.'</p>';
+                            echo "</div>";
 							}
+                            
 						}
 					?>
-					
-					
+                    <h2 class="title">Rejestracja</h2>
                     <form action="register.php" method="post" class="primary-form">
                         <label for="nrIndex">Nr Indeksu: </label>
                         <input type="text" name="nrIndex" class="input is-large">

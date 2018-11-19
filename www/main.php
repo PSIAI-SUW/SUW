@@ -52,11 +52,15 @@
     <main>
         <div class="container">
 			<?php
-				if (isset($_GET['error'])){
-					if ($_GET['error'] == 1 ) echo $error[] = "Brak uprawnień administratora";			
-				}
-			?>
+                    if (isset($_GET['error']))
+                    {
+                        echo "<div class=\"notification is-danger\">";
+                        if ($_GET['error'] == 1 ) echo $error[] = "Brak uprawnień administratora";
+                        echo "</div>";
+                    }
+                    ?>
             <div class="columns">
+                
                 <div class="column is-6">
                     <h2 class="title">Kursy</h2>
                     <ul class="list-items">

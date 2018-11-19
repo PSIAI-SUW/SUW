@@ -16,7 +16,7 @@ if(isset($_POST['login'])){
 	} 
 	else 
 	{
-		$error[] = 'Błędne dane logowania';
+		$notification[] = 'Błędne dane logowania';
 	}
 }
 
@@ -54,24 +54,28 @@ if(isset($_POST['login'])){
                 <div class="column is-6">
 					<?php
 						if (isset($_GET['error'])){
-							if ($_GET['error'] == 2 ) echo $error[] = "Zaloguj się do swojego konta"; 
+                            echo "<div class=\"notification is-info\">";
+							if ($_GET['error'] == 2) echo $error[] = "Zaloguj się do swojego konta";
+                            echo "</div>";
 						}
 						
 						if (isset($_GET['log'])){
-							if ($_GET['log'] == 1 ) echo $log[] = "Twoje konto zostało zarejestrowane. Teraz możesz się zalogować!"; 
+                            echo "<div class=\"notification is-success\">";
+							if ($_GET['log'] == 1 ) echo $log[] = "Twoje konto zostało zarejestrowane. Teraz możesz się zalogować!";
+                            echo "</div>";
 						}
+                        if(isset($notification))
+                        {
+                            foreach($notification as $row)
+                            {
+                                echo "<div class=\"notification is-danger\">";
+                                echo $row;
+                                echo "</div>";
+                            }
+                        }
 					
 					?>
                     <h2 class="title">Logowanie</h2>
-					
-						<?php				
-							if(isset($error)){
-							foreach($error as $error2){
-								echo $error2;
-								}
-							}
-						?>
-					
                     <form action="login.php" method="post" class="primary-form">
                         <label for="nrIndex">Nr Indeksu: </label>
                         <input type="text" name="nrIndex" class="input is-large">
