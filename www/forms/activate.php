@@ -9,6 +9,6 @@ if(isset($_POST['activateButton']))
     $stmt = $db->query($query);
 }
 
-header('Location: ../settings_admin.php');
+header('Location: ../settings_admin.php?not=2');
 
 ?>
