@@ -20,6 +20,7 @@ define('DBNAME','jakub9616');
 include('classes/user.php');
 $user = new User($db);
 
-
+include 'classes/course.php';
+$courses = new Course($db);
 
 ?>

@@ -1,15 +1,22 @@
-<?php require_once('config.php'); 
+<?php require_once('config.php');
 
-	if( $user->is_logged_in() ){
-		if ($_SESSION["type_account"] != "admin") 
-	{
-		header('Location: main_user.php');
-	}
-	}
-	else
-	{		
-		header('Location: index.php');
-	}
+if( $user->is_logged_in() ){
+    if ($_SESSION["type_account"] != "admin")
+    {
+        header('Location: main_user.php');
+    }
+}
+else
+{
+    header('Location: index.php');
+}
+
+if(isset($_POST['insertCourse']))
+{
+        $name = $_POST['nameCourse'];
+        $sql = "INSERT INTO kurs (nazwa) VALUES ('$name')";
+        $result = $courses->insertCourseName($sql);
+}
 
 ?>
 <!DOCTYPE html>
@@ -69,35 +76,23 @@
                 <div class="column is-6">
                     <h2 class="title">Kursy</h2>
                     <ul class="list-items">
-                        <li class="items"><a href="">Kurs 1</a></li>
-                        <li class="items"><a href="">Kurs 2</a></li>
-                        <li class="items"><a href="">kurs 3</a></li>
-                        <li class="items"><a href="">Kurs 4</a></li>
-                        <li class="items"><a href="">Kurs 5</a></li>
-                        <li class="items"><a href="">Kurs 6</a></li>
+                    <?php
+                    $sql = "SELECT * FROM kurs";
+                    $result = $courses->getCourseName($sql);
+                    foreach($result as $row)
+                    {
+                        echo "<li class=\"items\"><a href=\"\">".$row->nazwa."</a></li>";
+                    }
+                    ?>
                     </ul>
-                
-				<?php
-				$katalog    = 'uploadkurs/';
-				$pliki = scandir($katalog);
-				foreach($pliki as $plik) echo '<p>'.$plik.'</p>';
-				?>
-				<div> 
-				<form enctype="multipart/form-data" action="send.php" method="POST"> 
-				Dodaj kurs:<br/>
-				<input type="hidden" name="MAX_FILE_SIZE" value="500000" /> 
-				<input name="plik" type="file" /> 
-				<input type="submit" value="Wyślij kurs" /> 
-				</form> 
-				</div>
-				<div>
-				<form method="post" action="delete.php">
-				Usuń kurs:<br/>
-				<input type="text" name="filename"> - Nazwa kursu(wraz z rozszerzeniem)<br>
-				<input type="submit" value="OK!">
-				</form>
-				</div>
-			</div>
+
+                    <form action="main.php" method="post" class="primary-form">
+                        <label for="nameCourse">Utwórz kurs</label>
+                        <input type="text" name="nameCourse" class="input is-large">
+                        <input type="submit" name="insertCourse" value="Utwórz" class="primary-button">
+                    </form>
+				
+                </div>
                 <div class="column is-6">
                     <h2 class="title">Wykłady</h2>
                     <ul class="list-items">
@@ -113,11 +108,6 @@
                         <li class="items"><a href="download.php">Wykład 10</a></li>
                     </ul>
                 
-					<?php
-					$katalog1    = 'uploadwyklad/';
-					$pliki1 = scandir($katalog1);
-					foreach($pliki1 as $plik1) echo '<p>'.$plik1.'</p>';
-					?>
 					<div> 
 					<form enctype="multipart/form-data" action="sendwyklad.php" method="POST"> 
 					Dodaj wyklad:<br/>
