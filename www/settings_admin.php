@@ -9,7 +9,8 @@ if( $user->is_logged_in() ){
 else
 {
 	header('Location: login.php?error=2');
-}?>
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>

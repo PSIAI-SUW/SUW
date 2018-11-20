@@ -1,3 +1,16 @@
+<?php require_once 'config.php'; 
+
+if( $user->is_logged_in() ){
+	if ($_SESSION["type_account"] != "user") 
+	{
+		header('Location: settings_admin.php');
+	}
+}
+else
+{
+	header('Location: login.php?error=2');
+}?>
+
 <!DOCTYPE html>
 <html>
 <head>
