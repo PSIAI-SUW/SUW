@@ -12,6 +12,7 @@ a {
 .primary-button {
     padding: 10px 20px;
     border-radius: 10px;
+    border-style: none; 
     display: inline-block;
     color: white;
     background-color: #1a1f9d;
@@ -35,16 +36,16 @@ a {
 .list-items {
     margin-bottom: 30px;
 }
-.list-items > .items {
+.items {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 10px 20px;
     margin-right: 5px;
     margin-bottom: 10px;
     border-radius: 10px;
     background-color: black;
     color: white;
 }
-.items > a {
+.list-items a:hover {
     color: white;
 }
 .fa-cog {

@@ -19,7 +19,7 @@ class Course
         return $result;
 	}
 
-	public function insertCourseName($name)
+	public function insertDeleteCourse($name)
     {
         $stmt = $this->_db->prepare($name);
         $result = $stmt->execute();
