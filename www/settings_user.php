@@ -29,7 +29,7 @@ else
             <?php include 'includes/logo.html'; ?>
             </div>
             <div class="column is-6">
-            <a href="settings.php" id="settingsButton"><i class="fa fa-cog fa-3x" title="Ustawienia"></i></a>
+            <a href="settings_user.php" id="settingsButton"><i class="fa fa-cog fa-3x" title="Ustawienia"></i></a>
             <a href="logout.php" id="logoutButton" class="primary-button">Wyloguj</a>
             </div>
         </div>
@@ -39,10 +39,22 @@ else
 <section class="section is-medium">
     <main>
         <div class="container">
+
+		
             <div class="columns">
                 <div class="column is-6">
-                    <h2 class="title">Dane użytkownika</h2>
+                    <h2 class="title">Panel użytkownika</h2>
                     
+					<form action="forms/changepassword.php" method="post" class="primary-form">
+                            <label for="changepassword">Podaj stare hasło</label>
+                            <input type="password" name="oldpassword" placeholder="Wpisz obecne hasło" class="input is-large">
+							<label for="changepassword">Podaj nowe hasło</label>
+							<input type="password" name="newpassword" placeholder="Wpisz nowe hasło" class="input is-large">
+							<label for="changepassword">Powtórz nowe hasło</label>
+							<input type="password" name="newpassword2" placeholder="Wpisz nowe hasło" class="input is-large">
+                            <input type="submit" value="Zmień" name="changeButton" class="primary-button">
+                    </form>
+					
                 </div>
                 <div class="column is-6">
                     
