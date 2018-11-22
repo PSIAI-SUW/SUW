@@ -10,9 +10,7 @@ if(isset($_POST['changeButton']))
 	
 	if(empty($_POST['oldpassword']) && empty($_POST['newpassword']) && empty($_POST['newpassword2']))
 	{
-		{
-		echo "Wypełnij wszystkie pola";
-		}
+		header('Location: ../settings_user.php?error=8');	
 	}
 	else
 	{
@@ -29,21 +27,21 @@ if(isset($_POST['changeButton']))
 						$newpassword = md5($newpassword);
 						$stmt = $db->prepare('UPDATE users SET password = :newpassword WHERE login = :login');
 						$stmt->execute(array("newpassword" => $newpassword, "login" => $_SESSION['login']));
-						echo "Hasło zostało zmienione";
+						header('Location: ../settings_user.php?not=5');
 					}
 					else 
 					{
-						echo "Podajesz błędne hasło";
+						header('Location: ../settings_user.php?error=5');
 					}
 			}
 			else 
 			{
-				echo "Podane hasła nie są jednakowe";
+				header('Location: ../settings_user.php?error=6');
 			}
 		}
 		else
 		{
-			echo "Nowe hasło nie różni się od obecnego";
+			header('Location: ../settings_user.php?error=7');
 		}
 	}
 }

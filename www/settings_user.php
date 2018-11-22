@@ -39,10 +39,24 @@ else
 <section class="section is-medium">
     <main>
         <div class="container">
-
-		
             <div class="columns">
                 <div class="column is-6">
+					<?php
+					if (isset($_GET['not'])){
+                            echo "<div class=\"notification is-success\">";
+							if ($_GET['not'] == 5 ) echo $not[] = "Hasło zostało zmienione!";
+                            echo "</div>";
+                        }
+					if (isset($_GET['error']))
+                    {
+                        echo "<div class=\"notification is-danger\">";
+                        if ($_GET['error'] == 5 ) echo $error[] = "Podajesz błędne hasło!";
+						if ($_GET['error'] == 6 ) echo $error[] = "Podane hasła nie są jednakowe!";
+						if ($_GET['error'] == 7 ) echo $error[] = "Nowe hasło nie rózni się od starego!";
+						if ($_GET['error'] == 8 ) echo $error[] = "Wypełnij wszystkie pola!";
+                        echo "</div>";
+                    }
+					?>
                     <h2 class="title">Panel użytkownika</h2>
                     
 					<form action="forms/changepassword.php" method="post" class="primary-form">
