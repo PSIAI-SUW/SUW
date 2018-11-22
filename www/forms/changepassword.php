@@ -8,7 +8,7 @@ if(isset($_POST['changeButton']))
 	$newpassword = $_POST['newpassword'];
 	$newpassword2 = $_POST['newpassword2'];
 	
-	if(empty($_POST['oldpassword']) && empty($_POST['newpassword']) && empty($_POST['newpassword2']))
+	if(empty($_POST['oldpassword']) OR empty($_POST['newpassword']) OR empty($_POST['newpassword2']))
 	{
 		header('Location: ../settings_user.php?error=8');	
 	}
