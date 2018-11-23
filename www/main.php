@@ -3,7 +3,7 @@
 if( $user->is_logged_in() ){
     if ($_SESSION["type_account"] != "admin")
     {
-        header('Location: main_user.php');
+        header('Location: main_deactivate.php');
     }
 }
 else
@@ -29,20 +29,40 @@ if(isset($_POST['insertCourse']))
         $success[] = "Pomyślnie dodano kurs o nazwie: ".$insert;
     }
 }
-if(isset($_POST['deleteCourse']))
+
+/*if(!empty($_POST['deleteCourse']))
 {
-    $delete = $_POST['idCourse'];
-    $sql = "DELETE FROM kurs WHERE ID_Kurs = '$delete'";
-    $sql2 = "SELECT * FROM kurs WHERE ID_Kurs = '$delete'";
-    if($sql2) {
-        $result = $courses->insertDeleteCourse($sql);
-        $success[] = "Pomyślnie usunięto kurs o ID: ".$delete;
-    }
-    else
-    {
-        $error[] = "Podany ID kursu nie istnieje: ".$delete;
-    }
+	if(isset($_POST['deleteCourse']))
+	{
+		$delete = $_POST['idCourse'];
+		$sql = "DELETE FROM kurs WHERE ID_Kurs = '$delete'";
+		$sql2 = "SELECT * FROM kurs WHERE ID_Kurs = '$delete'";
+		if($sql2) 
+		{
+			$result = $courses->insertDeleteCourse($sql);
+			$success[] = "Pomyślnie usunięto kurs o ID: ".$delete;
+		}
+		else
+		{
+			$error[] = "Podany ID kursu nie istnieje: ".$delete;
+		}
+	}
 }
+
+
+	if (empty($_POST['idCourse']
+	{
+		echo "Podaj ID kursu!";
+	}
+	
+	else
+	{
+		
+	}
+	
+*/
+
+
 
 ?>
 <!DOCTYPE html>
@@ -88,8 +108,19 @@ if(isset($_POST['deleteCourse']))
 			<?php
             if (isset($_GET['error']))
             {
+				echo "<div class=\"notification is-danger\">";
                 if ($_GET['error'] == 1 ) $error[] = "Brak uprawnień administratora";
+				if ($_GET['error'] == 11 ) $error[] = "Podaj ID kursu!";
+				if ($_GET['error'] == 12 ) $error[] = "Podane ID nie jstnieje!";
+				echo "</div>";
             }
+			
+			if (isset($_GET['not']))
+            {
+				if ($_GET['not'] == 11 ) $not[] = "Pomyślnie usunięto kurs";
+            }
+			
+			
             if(isset($error))
             {
                 foreach($error as $row)

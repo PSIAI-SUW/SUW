@@ -2,14 +2,19 @@
 
 	if( $user->is_logged_in() ){
 		if ($_SESSION["type_account"] != "user") 
-	{
-		header('Location: main.php');
-	}
+        {
+            header('Location: main.php');
+        }
+        if ($SESSION["type_account"] != "aktywny")
+        {
+            header('Location:main_deactivate.php');
+        }
 	}
 	else
 	{		
 		header('Location: index.php');
 	}
+
 ?>
 
 <!DOCTYPE html>
