@@ -21,6 +21,9 @@ include('classes/user.php');
 $user = new User($db);
 
 include 'classes/course.php';
-$courses = new Course($db);
+$course = new Course($db);
+
+include 'classes/file.php';
+$file = new File($db);
 
 ?>
