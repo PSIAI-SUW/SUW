@@ -102,7 +102,20 @@ if(isset($_POST['insertCourse']))
                 }
             }
 
-
+if(isset($_POST['deleteCourse']))
+{
+    $delete = $_POST['idCourse'];
+    $sql = "DELETE FROM kurs WHERE ID_Kurs = '$delete'";
+    $sql2 = "SELECT * FROM kurs WHERE ID_Kurs = '$delete'";
+    if($sql2) {
+        $result = $course->insertDeleteCourse($sql);
+        $success[] = "Pomyślnie usunięto kurs o ID: ".$delete;
+    }
+    else
+    {
+        $error[] = "Podany ID kursu nie istnieje: ".$delete;
+    }
+}
             ?>
             <div class="columns">
 
@@ -135,16 +148,14 @@ if(isset($_POST['insertCourse']))
                 <div class="column is-6">
                     <h2 class="title">Wykłady</h2>
                     <ul class="list-items">
-                        <li><a href="download.php" class="items">Wykład 1</a></li>
-                        <li><a href="download.php" class="items">Wykład 2</a></li>
-                        <li><a href="download.php" class="items">Wykład 3</a></li>
-                        <li><a href="download.php" class="items">Wykład 4</a></li>
-                        <li><a href="download.php" class="items">Wykład 5</a></li>
-                        <li><a href="download.php" class="items">Wykład 6</a></li>
-                        <li><a href="download.php" class="items">Wykład 7</a></li>
-                        <li><a href="download.php" class="items">Wykład 8</a></li>
-                        <li><a href="download.php" class="items">Wykład 9</a></li>
-                        <li><a href="download.php" class="items">Wykład 10</a></li>
+                      <?php
+                        $sql = "SELECT * FROM Plik ORDER BY ID_Plik";
+                        $result = $file->getFileName($sql);
+                        foreach($result as $row)
+                        {
+                            echo "<li><a href=\"\" class=\"items\">".$row->nazwa."</a></li>";
+                        }
+                        ?>
                     </ul>
 
                     <div>
