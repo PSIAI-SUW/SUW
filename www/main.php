@@ -114,7 +114,7 @@ if(isset($_POST['insertCourse']))
                         $result = $courses->getCourseName($sql);
                         foreach($result as $row)
                         {
-                            echo "<li><a href=\"\" title=\"ID: ".$row->ID_Kurs."\" class=\"items\">".$row->nazwa."</a></li>";
+                            echo "<li><a href=\"\" class=\"items\">ID: ".$row->ID_Kurs." ".$row->nazwa."</a></li>";
                         }
                         ?>
                     </ul>
