@@ -46,9 +46,16 @@ else
                             echo "<div class=\"notification is-success\">";
 							if ($_GET['not'] == 1 ) echo $not[] = "Podane konto zostało usunięte!";
 							if ($_GET['not'] == 2 ) echo $not[] = "Podane konto zostało aktywowane!"; 
-							if ($_GET['not'] == 3 ) echo $not[] = "Podane konto zostało deaktywowane!"; 
+							if ($_GET['not'] == 3 ) echo $not[] = "Podane konto zostało dezaktywowane!";
                             echo "</div>";
                         }
+						
+						if (isset($_GET['error']))
+						{
+							echo "<div class=\"notification is-danger\">";
+							if ($_GET['error'] == 10 ) echo $error[] = "Podaj poprawny nick użytkownika!";
+							echo "</div>";
+						}
 					?>
                     <h2 class="title">Panel administratora</h2>
                     <table class="table is-hoverable is-striped">

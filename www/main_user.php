@@ -1,13 +1,13 @@
 <?php require_once('config.php'); 
 
-	if( $user->is_logged_in() ){
-		if ($_SESSION["type_account"] != "user") 
+	if( $user->is_logged_in() )
+	{
+        if ($_SESSION["active"] != "aktywny")
         {
-            header('Location: main.php');
-        }
-        if ($SESSION["type_account"] != "aktywny")
-        {
-            header('Location:main_deactivate.php');
+            if ($_SESSION["type_account"] != "user")
+            {
+                header('Location: main.php');
+            }
         }
 	}
 	else
