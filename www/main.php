@@ -115,7 +115,7 @@ if(isset($_POST['deleteCourse']))
     {
         $error[] = "Podany ID kursu nie istnieje: ".$delete;
     }
-}
+	}
             ?>
             <div class="columns">
 
