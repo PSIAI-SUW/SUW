@@ -31,7 +31,9 @@
                     <p><a href="main.php">Kurs 1</a><i class="fa fa-chevron-right fa-fw"></i>
                     Wykład 1</p>
                     <p>Masz dostęp do tego pliku.</p>
-                    <a href="main.py>" class="primary-button" download>Pobierz</a>
+                    <form action="download.php" method="post">
+                      <input type="submit" value="Pobierz" class="primary-button">
+                    </form>
                 </div>
 
             </div>
