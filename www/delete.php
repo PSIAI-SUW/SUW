@@ -1,11 +1,42 @@
 <?php
-$filename = $_POST['filename'];
-$file_to_del = ("uploadkurs/$filename");
-unlink($file_to_del);
-echo "Usunięto $file_to_del !";
+	require_once("config.php");
 
-$filename1 = $_POST['filename1'];
-$file_to_del1 = ("uploadwyklad/$filename1");
-unlink($file_to_del1);
-echo "Usunięto $file_to_del1 !";
+
+	/*if (isset($_POST['filename'])){
+		$filename = $_POST['filename'];
+		$file_to_del = ("uploadkurs/$filename");
+		if (file_exists($file_to_del)){
+			unlink($file_to_del);
+
+		echo "Usunięto $file_to_del !";
+        }
+	}*/
+
+
+
+
+	if (isset($_POST['filename1'])){ //tu usuwamy plik/wykład
+		$filename1 = $_POST['filename1'];
+
+		$stmt = $db->prepare("SELECT sciezka,nr_pliku FROM plik WHERE nazwa=:name;"); // znajdz sciezke i nr pliku o tej nazwie
+		$stmt->execute(array("name"=>$filename1));
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		$file_to_del1 = $row['sciezka']; // sciezka pliku do usuniecia		
+			
+		if (file_exists($file_to_del1)){ // jeśli plik istnieje
+			unlink($file_to_del1); //usuń plik
+
+			$stmt = $db->prepare("DELETE FROM Dodanie_Pliku WHERE nr_plik=:nr");
+			$stmt->execute(array("nr"=>$row['nr_pliku'])); // usuń wpis z tabeli 
+
+			$stmt = $db->prepare("DELETE FROM plik WHERE nr_pliku=:nr");
+			$stmt->execute(array("nr"=>$row['nr_pliku'])); // usuń wpis z tabeli 
+            header('Location: main.php?not=15');
+		}
+        else
+        {
+            header('Location: main.php?errors=15');
+        }
+	}
+
 ?>
