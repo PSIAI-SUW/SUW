@@ -5,8 +5,7 @@ class File
 {
 
     private $_db;
-    public $name;
-    public $url = 'uploads/';
+    public $path = 'uploads/';
 
     function __construct($db)
     {
@@ -30,17 +29,9 @@ class File
 
     public function downloadFile($name)
     {
-      $file = $this->url;
-      $file .= $name;
-      echo $file;
+      $file = $this->path.$name;
+
       if(!is_file($file)) { die("<b>404 File not found!</b>"); }
-
-        header("Pragma: public");
-        header("Expires: 0");
-        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-        header("Cache-Control: public");
-        header("Content-Description: File Transfer");
-
         header("Content-Type: application/pdf");
         @readfile($file);//funkcja ktora czyta plik i  go wypisuje
         exit;
