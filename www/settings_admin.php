@@ -29,6 +29,7 @@ else
             <?php include 'includes/logo.html'; ?>
             </div>
             <div class="column is-6">
+			<a href="log.php" id="logoutButton" class="primary-button">Logi</a>
             <a href="settings_admin.php" id="settingsButton"><i class="fa fa-cog fa-3x" title="Ustawienia"></i></a>
             <a href="logout.php" id="logoutButton" class="primary-button">Wyloguj</a>
             </div>

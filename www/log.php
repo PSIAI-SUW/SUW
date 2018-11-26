@@ -31,7 +31,7 @@
             </div>
             <div class="column is-6">
 			
-			
+				<a href="log.php" id="logoutButton" class="primary-button">Logi</a>
 				<a href="<?php 	
 				if( $user->is_logged_in() ){
 			
