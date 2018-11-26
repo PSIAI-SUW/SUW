@@ -93,6 +93,7 @@ if(isset($_POST['deleteCourse']))
                 echo "<div class=\"notification is-danger\">";
                 if ($_GET['errors'] == 11 ) echo $errors[] = "Podaj ID kursu!";
                 if ($_GET['errors'] == 12 ) echo $errors[] = "Podane ID nie jstnieje!";
+                if ($_GET['errors'] == 15 ) echo $errors[] = "Podany plik nie istnieje";
                 echo "</div>";
             }
 
@@ -100,6 +101,8 @@ if(isset($_POST['deleteCourse']))
             {
                 echo "<div class=\"notification is-success\">";
                 if ($_GET['not'] == 11 ) echo $not[] = "Pomyślnie usunięto kurs";
+                if ($_GET['not'] == 15 ) echo $not[] = "Pomyślnie usunięto plik";
+                if ($_GET['not'] == 16 ) echo $not[] = "Pomyślnie dodano plik";
                 echo "</div>";
             }
 
@@ -150,18 +153,21 @@ if(isset($_POST['deleteCourse']))
                 <div class="column is-6">
                     <h2 class="title">Wykłady</h2>
                     <ul class="list-items">
-                      <?php
+                        <?php
                         $sql = "SELECT * FROM Plik ORDER BY ID_Plik";
                         $result = $file->getFileName($sql);
                         foreach($result as $row)
                         {
-                            echo "<li><a href=\"\" class=\"items\">".$row->nazwa."</a></li>";
+                            echo "<li><a href=\"#\" class=\"items\">".$row->nazwa."</a></li>";
                         }
+
+
+
                         ?>
                     </ul>
 
                     <div>
-                        <form enctype="multipart/form-data" action="sendwyklad.php" method="POST">
+                        <form enctype="multipart/form-data" accept-charset="UTF-8" action="sendwyklad.php" method="POST">
                             Dodaj wyklad:<br/>
                             <input type="hidden" name="MAX_FILE_SIZE" value="500000" />
                             <input name="plik" type="file" />
