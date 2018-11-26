@@ -118,20 +118,6 @@ if(isset($_POST['deleteCourse']))
                 }
             }
 
-if(isset($_POST['deleteCourse']))
-{
-    $delete = $_POST['idCourse'];
-    $sql = "DELETE FROM kurs WHERE ID_Kurs = '$delete'";
-    $sql2 = "SELECT * FROM kurs WHERE ID_Kurs = '$delete'";
-    if($sql2) {
-        $result = $course->insertDeleteCourse($sql);
-        $success[] = "Pomyślnie usunięto kurs o ID: ".$delete;
-    }
-    else
-    {
-        $error[] = "Podany ID kursu nie istnieje: ".$delete;
-    }
-	}
             ?>
             <div class="columns">
 
