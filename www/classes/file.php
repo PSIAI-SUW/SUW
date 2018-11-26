@@ -29,7 +29,7 @@ class File
 
     public function downloadFile($name)
     {
-        $file = $this->path.$name;
+        $file = $this->path.$name.".pdf";
 
         if(!is_file($file)) { die("<b>404 File not found!</b>"); }
 
