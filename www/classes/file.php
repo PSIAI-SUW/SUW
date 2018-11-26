@@ -27,40 +27,45 @@ class File
         return $result;
     }
 
-    public function downloadFile($name)
+    public function downloadFile($name, $user)
     {
+        if(substr($name, 0, 1) == '.')
+        {
+          $name = substr($name, 1);
+        }
+
         $file = $this->path.$name.".pdf";
 
         if(!is_file($file)) { die("<b>404 File not found!</b>"); }
 
         try
         {
-            $this->addWatermark($file);
+            $this->addWatermark($file, $user);
         }
         catch(Exception $e)
         {
-            echo $e;
-            /*
+            //echo $e;
+
             $pdfWithWatermark = $file;
             header("Content-Type: application/pdf");
             @readfile($pdfWithWatermark); //funkcja ktora czyta plik i go wypisuje
             exit;
-            */
+            
         }
     }
 
-    public function addWatermark($file)
+    public function addWatermark($file, $user)
     {
         class_exists('TCPDF', true);
 
         $date = date('Y-m-d H:i:s');
-        $user = 'KP39527';
 
         $pdf = new FPDF();
         $pdf->AddPage();
         $pdf->SetFont('Arial','B',16);
         $pdf->Cell(40,10,'Hello World!');
         $pdf->Output();
+
     }
 
 }

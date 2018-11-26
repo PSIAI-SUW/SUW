@@ -95,6 +95,7 @@
                         foreach($result as $row)
                         {
 														echo "<form action='main_user.php' method='post'>";
+														echo "<input type='hidden' name='nazwa' value=".$row->nazwa." />";
                             echo "<input type='submit' value=".$row->nazwa." name='download' class=\"items\">";
 														echo "</form>";
                         }
@@ -102,8 +103,8 @@
 		                    <?php
 		                    if(isset($_POST['download']))
 		                    {
-													class_exists('File', true);
-		                      $file->downloadFile($row->name);
+													require_once('config.php');
+		                      $file->downloadFile($_POST['nazwa'], $_SESSION['login']);
 		                    }
 		                    ?>
                     </ul>
