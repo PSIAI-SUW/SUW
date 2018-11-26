@@ -89,16 +89,14 @@
                 <div class="column is-6">
                     <h2 class="title">Wykłady</h2>
                     <ul class="list-items">
-                        <li class="items"><a href="download.php">Wykład 1</a></li>
-                        <li class="items"><a href="download.php">Wykład 2</a></li>
-                        <li class="items"><a href="download.php">Wykład 3</a></li>
-                        <li class="items"><a href="download.php">Wykład 4</a></li>
-                        <li class="items"><a href="download.php">Wykład 5</a></li>
-                        <li class="items"><a href="download.php">Wykład 6</a></li>
-                        <li class="items"><a href="download.php">Wykład 7</a></li>
-                        <li class="items"><a href="download.php">Wykład 8</a></li>
-                        <li class="items"><a href="download.php">Wykład 9</a></li>
-                        <li class="items"><a href="download.php">Wykład 10</a></li>
+                        <?php
+                        $sql = "SELECT * FROM Plik ORDER BY ID_Plik";
+                        $result = $file->getFileName($sql);
+                        foreach($result as $row)
+                        {
+                            echo "<li><a href=\"#\" class=\"items\">".$row->nazwa."</a></li>";
+                        }
+                        ?>
                     </ul>
 
 				</div>
