@@ -74,12 +74,14 @@
                 <div class="column is-6">
                     <h2 class="title">Kursy</h2>
                     <ul class="list-items">
-                        <li class="items"><a href="">Kurs 1</a></li>
-                        <li class="items"><a href="">Kurs 2</a></li>
-                        <li class="items"><a href="">kurs 3</a></li>
-                        <li class="items"><a href="">Kurs 4</a></li>
-                        <li class="items"><a href="">Kurs 5</a></li>
-                        <li class="items"><a href="">Kurs 6</a></li>
+                        <?php
+                        $sql = "SELECT * FROM kurs ORDER BY ID_Kurs";
+                        $result = $courses->getCourseName($sql);
+                        foreach($result as $row)
+                        {
+                            echo "<li><a href=\"\" title=\"ID: ".$row->ID_Kurs."\" class=\"items\">".$row->nazwa."</a></li>";
+                        }
+                        ?>
                     </ul>
                
 			</div>
