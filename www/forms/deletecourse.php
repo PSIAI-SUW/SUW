@@ -12,7 +12,7 @@ if(isset($_POST['deleteCourse']))
     $sql = "DELETE FROM kurs WHERE ID_Kurs = '$delete'";
     if($delco)
     {
-    $result = $courses->insertDeleteCourse($sql);
+    $result = $course->insertDeleteCourse($sql);
     header('Location: ../main.php?not=11');
     }
     else

@@ -25,10 +25,26 @@ if(isset($_POST['insertCourse']))
     else
     {
         $sql = "INSERT INTO kurs (nazwa) VALUES ('$insert')";
-        $result = $courses->insertDeleteCourse($sql);
+        $result = $course->insertDeleteCourse($sql);
         $success[] = "Pomyślnie dodano kurs o nazwie: ".$insert;
     }
 }
+
+if(isset($_POST['deleteCourse']))
+{
+    $delete = $_POST['idCourse'];
+    $sql = "DELETE FROM kurs WHERE ID_Kurs = '$delete'";
+    $sql2 = "SELECT * FROM kurs WHERE ID_Kurs = '$delete'";
+    if($sql2) {
+        $result = $course->insertDeleteCourse($sql);
+        $success[] = "Pomyślnie usunięto kurs o ID: ".$delete;
+    }
+    else
+    {
+        $error[] = "Podany ID kursu nie istnieje: ".$delete;
+    }
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -102,20 +118,6 @@ if(isset($_POST['insertCourse']))
                 }
             }
 
-if(isset($_POST['deleteCourse']))
-{
-    $delete = $_POST['idCourse'];
-    $sql = "DELETE FROM kurs WHERE ID_Kurs = '$delete'";
-    $sql2 = "SELECT * FROM kurs WHERE ID_Kurs = '$delete'";
-    if($sql2) {
-        $result = $course->insertDeleteCourse($sql);
-        $success[] = "Pomyślnie usunięto kurs o ID: ".$delete;
-    }
-    else
-    {
-        $error[] = "Podany ID kursu nie istnieje: ".$delete;
-    }
-	}
             ?>
             <div class="columns">
 
@@ -124,7 +126,7 @@ if(isset($_POST['deleteCourse']))
                     <ul class="list-items">
                         <?php
                         $sql = "SELECT * FROM kurs ORDER BY ID_Kurs";
-                        $result = $courses->getCourseName($sql);
+                        $result = $course->getCourseName($sql);
                         foreach($result as $row)
                         {
                             echo "<li><a href=\"\" class=\"items\">ID: ".$row->ID_Kurs." ".$row->nazwa."</a></li>";

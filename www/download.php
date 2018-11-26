@@ -31,7 +31,18 @@
                     <p><a href="main.php">Kurs 1</a><i class="fa fa-chevron-right fa-fw"></i>
                     Wykład 1</p>
                     <p>Masz dostęp do tego pliku.</p>
-                    <a href="main.py>" class="primary-button" download>Pobierz</a>
+
+                    <form action="download.php" method="post">
+                      <input type="submit" value="Pobierz" name="download" class="primary-button">
+                    </form>
+                    <?php
+                    include('./config.php');
+                    if(isset($_POST['download']))
+                    {
+                      $name = 'nazwa.pdf';
+                      $file->downloadFile($name);
+                    }
+                    ?>
                 </div>
 
             </div>
