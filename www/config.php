@@ -17,6 +17,8 @@ define('DBNAME','jakub9616');
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
+require_once 'vendor/autoload.php';
+	
 include('classes/user.php');
 $user = new User($db);
 
