@@ -26,4 +26,7 @@ $course = new Course($db);
 include 'classes/file.php';
 $file = new File($db);
 
+include 'classes/statistic.php';
+$stats = new Statistic($db);
+
 ?>

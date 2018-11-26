@@ -44,14 +44,16 @@
                     <h2 class="title">Statystyki</h2>
                     <h3 class="subtitle"><i class="fa fa-users fa-fw"></i>Liczba użytkowników</h3>
                     <ul class="list-items">
-                        <li class="items">Razem<br><?php echo $row[0] ?></li>
+                        <li class="items">Razem<br><?php echo $users[0] ?></li>
                     </ul>
                     <h3 class="subtitle"><i class="fa fa-download fa-fw"></i>Pobrania</h3>
                     <ul class="list-items">
-                        <li class="items">Dzień<br><?php echo $download_today2[0] ?></li>
-                        <li class="items">Tydzień<br><?php echo $download_week2[0] ?></li>
-                        <li class="items">Miesiąc<br><?php echo $download_month2[0] ?></li>
-                        <li class="items">Semestr<br><?php echo $download_semestr2[0] ?></li>
+                        <li class="items">Dzień<br>
+                            <?php echo $download_today[0]; ?>
+                        </li>
+                        <li class="items">Tydzień<br><?php echo $download_week[0]; ?></li>
+                        <li class="items">Miesiąc<br><?php echo $download_month[0]; ?></li>
+                        <li class="items">Semestr<br><?php echo $download_semestr[0]; ?></li>
                     </ul>
                 </div>
             </div>
