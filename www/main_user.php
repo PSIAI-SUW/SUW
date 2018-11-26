@@ -76,13 +76,14 @@
                     <ul class="list-items">
                         <?php
                         $sql = "SELECT * FROM kurs ORDER BY ID_Kurs";
-                        $result = $courses->getCourseName($sql);
+                        $result = $course->getCourseName($sql);
                         foreach($result as $row)
                         {
-                            echo "<li><a href=\"\" title=\"ID: ".$row->ID_Kurs."\" class=\"items\">".$row->nazwa."</a></li>";
+                            echo "<li><a href=\"\" class=\"items\">ID: ".$row->ID_Kurs." ".$row->nazwa."</a></li>";
                         }
                         ?>
                     </ul>
+				
                
 			</div>
                 <div class="column is-6">
