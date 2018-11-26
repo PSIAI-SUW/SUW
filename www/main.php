@@ -1,3 +1,4 @@
+
 <?php require_once('config.php');
 
 if( $user->is_logged_in() ){
@@ -171,14 +172,15 @@ if(isset($_POST['deleteCourse']))
                             Dodaj wyklad:<br/>
                             <input type="hidden" name="MAX_FILE_SIZE" value="500000" />
                             <input name="plik" type="file" />
-                            <input type="submit" value="Wyślij wyklad" />
+                            <input type="submit" value="Wyślij wyklad" class="primary-button"/>
                         </form>
                     </div>
                     <div>
                         <form method="post" action="delete.php">
-                            Usuń wykład:<br/>
-                            <input type="text" name="filename1"> - Nazwa pliku(wraz z rozszerzeniem)<br>
-                            <input type="submit" value="OK!">
+                            <h2>Usuń plik</h2>
+
+                            <input type="text" name="filename1" placeholder="Podaj nazwe pliku" class="input is-large"> <br>
+                            <input type="submit" value="Usuń" class="primary-button">
                         </form>
                     </div>
                 </div>
@@ -190,4 +192,4 @@ if(isset($_POST['deleteCourse']))
 <?php include 'includes/footer.html'; ?>
 
 </body>
-</html>
+</html>	
