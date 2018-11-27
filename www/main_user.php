@@ -103,6 +103,20 @@
 		                    <?php
 		                    if(isset($_POST['download']))
 		                    {
+													$date = date('Y-m-d H:i:s');
+
+													$sql_user = "SELECT `ID_USER` FROM `users` WHERE `login`='".$_SESSION['login']."'";
+													$id_user = $file->insertDeleteFile($sql_user);
+
+													$sql_plik = "SELECT `ID_Plik` FROM `Plik` WHERE `nazwa`='".$_POST['nazwa']."'";
+													$id_plik = $file->insertDeleteFile($sql_plik);
+
+													$sql_kurs = "SELECT `nr_kurs` FROM `Dodanie_Pliku` WHERE `nr_plik`='".$id_plik."'";
+													$id_kurs = $file->insertDeleteFile($sql_kurs);
+
+													$sql = "INSERT INTO Pobranie_Pliku (ID_Pobieranie_Pliku, data_dodania, nr_kurs, nr_plik, nr_user) VALUES (NULL, '".$date."' , '".$id_kurs."', '".$id_plik."', '".$id_user."')";
+													$result = $file->insertDeleteFile($sql);
+
 													require_once('config.php');
 		                      $file->downloadFile($_POST['nazwa'], $_SESSION['login']);
 		                    }

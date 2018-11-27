@@ -45,12 +45,10 @@ class File
         catch(Exception $e)
         {
             //echo $e;
-
             $pdfWithWatermark = $file;
             header("Content-Type: application/pdf");
             @readfile($pdfWithWatermark); //funkcja ktora czyta plik i go wypisuje
             exit;
-            
         }
     }
 
@@ -65,9 +63,6 @@ class File
         $pdf->SetFont('Arial','B',16);
         $pdf->Cell(40,10,'Hello World!');
         $pdf->Output();
-
     }
-
 }
-
 ?>
