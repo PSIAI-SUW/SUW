@@ -44,25 +44,30 @@ class File
         }
         catch(Exception $e)
         {
-            //echo $e;
-            $pdfWithWatermark = $file;
+            echo $e;
+            /*$pdfWithWatermark = $file;
             header("Content-Type: application/pdf");
             @readfile($pdfWithWatermark); //funkcja ktora czyta plik i go wypisuje
             exit;
+            */
         }
     }
 
     public function addWatermark($file, $user)
     {
         class_exists('TCPDF', true);
+        class_exists('TCPDI', true);
 
         $date = date('Y-m-d H:i:s');
+
+        echo $file." ".$user." ".$date."\n";
 
         $pdf = new FPDF();
         $pdf->AddPage();
         $pdf->SetFont('Arial','B',16);
         $pdf->Cell(40,10,'Hello World!');
         $pdf->Output();
+
     }
 }
 ?>
