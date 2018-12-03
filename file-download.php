@@ -7,11 +7,11 @@
     $id_kurs = htmlentities(stripslashes(trim($_GET['kurs_id'])), ENT_QUOTES);
     $path = htmlentities(stripslashes(trim($_GET['url'])), ENT_QUOTES);
     $date = date('Y-m-d H:i:s');
-
+	$ip_user = htmlentities(stripslashes(trim($_GET['user_ip'])), ENT_QUOTES);
     $file_url = $path;
 
     // statystyka
-    $sql = "INSERT INTO Pobranie_Pliku (ID_Pobieranie_Pliku, data_dodania, nr_kurs, nr_plik, nr_user) VALUES (NULL, '".$date."' , '".$id_kurs."' , '".$id_plik."', '".$id_user."')";
+    $sql = "INSERT INTO Pobranie_Pliku (ID_Pobieranie_Pliku, data_dodania, nr_kurs, nr_plik, nr_user, ip_user) VALUES (NULL, '".$date."' , '".$id_kurs."' , '".$id_plik."', '".$id_user."', '".$ip_user."')";
     $result = $file->insertDeleteFile($sql);
 
     // pobieranie pliku
