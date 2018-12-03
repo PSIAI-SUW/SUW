@@ -15,7 +15,7 @@ else
 <html>
 <head>
 
-<title>System Udostępniania Wykładów</title>
+<title>Panel administratora - System Udostępniania Wykładów</title>
 <?php include 'includes/head-meta.html'; ?>
 
 </head>
@@ -61,7 +61,7 @@ else
             <div class="columns">
                 <div class="column is-6">
 
-                    <h2 class="title">Panel administratora</h2>
+                    <h2 class="title">Zarządzanie kontami użytkowników</h2>
                     <table class="table is-hoverable is-striped">
                         <thead>
                            <tr>
@@ -109,7 +109,7 @@ else
                         </thead>
                         <?php
 
-                        $kurs = $db->query("SELECT * FROM plik")->fetchAll(PDO::FETCH_OBJ);
+                        $kurs = $db->query("SELECT * FROM Plik")->fetchAll(PDO::FETCH_OBJ);
                         foreach ($kurs as $row)
                         {
                             echo "<tr>";
