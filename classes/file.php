@@ -5,14 +5,13 @@ class File
 {
 
     private $_db;
-    public $path = 'uploads/';
-
+    
     function __construct($db)
     {
         $this->_db = $db;
     }
 
-    public function getFileInfo($name)
+    public function getFileName($name)
     {
         $stmt = $this->_db->prepare($name);
         $stmt->execute();
@@ -27,10 +26,8 @@ class File
         return $result;
     }
 
-    public function downloadFile($name_file, $id_user, $date)
+    public function downloadFile($file, $id_user, $date)
     {
-
-        $file = $this->path.$name_file.".pdf";
 
         if(!is_file($file)) { die("<b>404 File not found!</b>"); }
 
