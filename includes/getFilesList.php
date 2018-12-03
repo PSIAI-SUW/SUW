@@ -9,7 +9,7 @@ if(isset($_GET['ID_Kurs']))
     $result = $file->getFileName($sql);
     if(!empty($result)) {
         foreach ($result as $row) {
-			echo "<li><a href=\"file-download.php?file_id={$row->ID_Plik}&file_name={$row->nazwa}&url={$row->sciezka}&user_ip={$_SERVER['REMOTE_ADDR']}&kurs_id={$getID}&user_id={$_SESSION['ID_USER']}\" class=\"items\">".$row->nazwa."</a></li>";
+			echo "<li><a href=\"file-download.php?file_id={$row->ID_Plik}&file_name={$row->nazwa}&url={$row->sciezka}&user_ip={$_SERVER['REMOTE_ADDR']}&kurs_id={$getID}&user_id={$_SESSION['ID_USER']}\" class=\"items\">".$row->nazwa."</a></li>"; 
         }
     }
     else

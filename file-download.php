@@ -10,7 +10,7 @@
 	$ip_user = htmlentities(stripslashes(trim($_GET['user_ip'])), ENT_QUOTES);
     $file_url = $path;
 
-    // statystyka
+    // statystyka 
     $sql = "INSERT INTO Pobranie_Pliku (ID_Pobieranie_Pliku, data_dodania, nr_kurs, nr_plik, nr_user, ip_user) VALUES (NULL, '".$date."' , '".$id_kurs."' , '".$id_plik."', '".$id_user."', '".$ip_user."')";
     $result = $file->insertDeleteFile($sql);
 
