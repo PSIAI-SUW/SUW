@@ -1,13 +1,7 @@
 <?php
-  $sql = "SELECT * FROM Plik ORDER BY ID_Plik";
-  $result = $file->getFileName($sql);
+  $sql = "SELECT * FROM Plik";
+  $result = $file->getFileInfo($sql);
   foreach($result as $row){
-      echo "<form action='main_user.php' method='post'>";
-      echo "<input type='hidden' name='nazwa' value=".$row->nazwa." />";
-      echo "<input type='submit' value=".$row->nazwa." name='download' class=\"items\">";
-      echo "</form>";
-  }
-  if(isset($_POST['download'])){
-    $file->downloadFile($_POST['nazwa'], $_SESSION['login']);
+      echo "<a href=\"file-download.php?file_id={$row->ID_Plik}&user_id={$_SESSION['ID_USER']}\" class=\"items\">".$row->nazwa."</a>";
   }
 ?>
