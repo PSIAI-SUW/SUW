@@ -46,7 +46,7 @@ else
                 if ($_GET['not'] == 1 ) echo $not[] = "Podane konto zostało usunięte!";
                 if ($_GET['not'] == 2 ) echo $not[] = "Podane konto zostało aktywowane!";
                 if ($_GET['not'] == 3 ) echo $not[] = "Podane konto zostało dezaktywowane!";
-                if ($_GET['not'] == 20 ) echo $not[] = "Poprawnie dodano";
+                if ($_GET['not'] == 20 ) echo $not[] = "Poprawnie nadano uprawnienia do pliku";
                 echo "</div>";
             }
 
@@ -102,18 +102,17 @@ else
                     <table class="table is-hoverable is-striped">
                         <thead>
                         <tr>
-                            <th>ID kursu</th>
-                            <th>Nazwa kursu</th>
+                            <th>ID pliku</th>
+                            <th>Nazwa pliku</th>
                         </tr>
                         </thead>
                         <?php
 
-                        $kurs = $db->query("SELECT * FROM kurs")->fetchAll(PDO::FETCH_OBJ);
-                       // $users = $db->query("SELECT * FROM users WHERE type_account = 'user' && active = 'aktywny'")->fetchAll(PDO::FETCH_OBJ);
+                        $kurs = $db->query("SELECT * FROM plik")->fetchAll(PDO::FETCH_OBJ);
                         foreach ($kurs as $row)
                         {
                             echo "<tr>";
-                            echo "<td>" . $row->ID_Kurs . "</td>";
+                            echo "<td>" . $row->ID_Plik . "</td>";
                             echo "<td>" . $row->nazwa . "</td>";
                             echo "</tr>";
 
@@ -129,8 +128,6 @@ else
                         </tr>
                         </thead>
                         <?php
-
-                        //$kurs = $db->query("SELECT * FROM kurs")->fetchAll(PDO::FETCH_OBJ);
                         $users = $db->query("SELECT * FROM users WHERE type_account = 'user' && active = 'aktywny'")->fetchAll(PDO::FETCH_OBJ);
                         foreach ($users as $row)
                         {
@@ -144,8 +141,8 @@ else
                     </table>
 
                     <form action="forms/dostep.php" method="post" class="primary-form">
-                        <label for="dostep">Daj uprawnienia do przeglądania kursu</label>
-                        <input type="text" name="kurs" placeholder="Podaj ID kursu" class="input is-large">
+                        <label for="dostep">Daj uprawnienia do przeglądania plików</label>
+                        <input type="text" name="plik" placeholder="Podaj ID pliku" class="input is-large">
                         <input type="text" name="user" placeholder="Podaj ID użytkownika" class="input is-large">
                         <input type="submit" value="Daj uprawnienia" name="dostepButton" class="primary-button">
                     </form>
