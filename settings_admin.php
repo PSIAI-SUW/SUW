@@ -54,6 +54,7 @@ else
             {
                 echo "<div class=\"notification is-danger\">";
                 if ($_GET['error'] == 10 ) echo $error[] = "Podaj poprawny nick użytkownika!";
+                if ($_GET['error'] == 20 ) echo $error[] = "Podaj poprawne ID!";
                 echo "</div>";
             }
             ?>

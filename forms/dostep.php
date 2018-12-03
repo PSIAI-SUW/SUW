@@ -7,7 +7,12 @@ $kurs = $_POST['plik'];
 $dos = $db->query("SELECT * FROM plik") ->fetchAll(PDO::FETCH_OBJ);
 
 if(isset($_POST['dostepButton'])) {
-    if ($dos) {
+    if($_POST['plik']<1 OR $_POST['user']<1)
+    {
+        header('Location: ../settings_admin.php?error=20');
+    }
+    else
+    {
         $stmt = $db->prepare('INSERT INTO dostep (nr_pliku, nr_user) VALUES (:plik, :user)');
         $stmt->execute(array(
             ':plik' => $_POST['plik'],
@@ -16,14 +21,6 @@ if(isset($_POST['dostepButton'])) {
         header('Location: ../settings_admin.php?not=20');
     }
 }
-
-/*if ($dos) {
-    $query = ("INSERT INTO dostep VALUES (nr_kursu = '$kurs', nr_user = '$user'");
-    $stmt = $db->query($query);
-    //header('Location: ../settings_admin.php?not=2');
-    echo "Nadałeś uprawnienia";
-
-}*/
 
 
 
