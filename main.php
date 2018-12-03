@@ -184,6 +184,7 @@ if(isset($_POST['deleteCourse']))
                         <form enctype="multipart/form-data" accept-charset="UTF-8" action="sendwyklad.php" method="POST">
                             Dodaj wyklad:<br/>
                             <input type="hidden" name="MAX_FILE_SIZE" value="500000" />
+                            <input type="text" name="nrkursu" placeholder="Numer Kursu" class="input is-large">
                             <input name="plik" type="file" />
                             <input type="submit" value="Wyślij wyklad" class="primary-button"/>
                         </form>

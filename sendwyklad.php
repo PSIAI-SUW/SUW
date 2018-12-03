@@ -24,12 +24,14 @@ if(is_uploaded_file($plik_tmp))
 
 
 
-	$sql = "insert into `Plik` (`nazwa`, `nr_pliku` , `sciezka`) VALUES (:name,:nplik, :path)";
+	$sql = "insert into `Plik` (`nazwa` , `nr_kursu` , `nr_pliku` , `sciezka`) VALUES (:name, :nkurs, :nplik, :path)";
 	$stmt = $db->prepare($sql);
 	$stmt->execute(array(
-		"name"=>$plik_nazwa, 
+		"name"=>$plik_nazwa,
+        "nkurs"=>$_POST['nrkursu'],
 		"nplik"=>($id+1), 
 		"path"=>"uploadwyklad/$plik_nazwa"));
+
 
 
 
@@ -38,7 +40,7 @@ if(is_uploaded_file($plik_tmp))
 	
 	$stmt = $db->prepare($sql);
 	$stmt->execute(array(
-		"nkurs"=>2,
+		"nkurs"=>$_POST['nrkursu'],
 		"nplik"=>($id+1), 
 		"nuser"=>$_SESSION['ID_USER'])); 
 
