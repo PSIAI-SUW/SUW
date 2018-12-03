@@ -46,7 +46,6 @@ if(isset($_POST['deleteCourse']))
     }
 }
 
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -134,8 +133,10 @@ if(isset($_POST['deleteCourse']))
                         $result = $course->getCourseName($sql);
                         foreach($result as $row)
                         {
-                            echo "<li><a href=\"\" class=\"items\">ID: ".$row->ID_Kurs." ".$row->nazwa."</a></li>";
+                            echo "<li><a href=\"main.php?ID_Kurs=$row->ID_Kurs\" class=\"items\">ID: ".$row->ID_Kurs." ".$row->nazwa."</a></li>";
                         }
+
+
                         ?>
                     </ul>
 
@@ -158,11 +159,22 @@ if(isset($_POST['deleteCourse']))
                         <?php
                         $sql = "SELECT * FROM Plik ORDER BY ID_Plik";
                         $result = $file->getFileName($sql);
-                        foreach($result as $row)
-                        {
-                            echo "<li><a href=\"#\" class=\"items\">".$row->nazwa."</a></li>";
-                        }
 
+                        if(isset($_GET['ID_Kurs']))
+                        {
+                            $getID = htmlentities($_GET['ID_Kurs'],ENT_QUOTES);
+                            $sql = "SELECT * FROM plik WHERE nr_kursu = $getID";
+                            $result = $file->getFileName($sql);
+                            if(!empty($result)) {
+                                foreach ($result as $row) {
+                                    echo "<li><a href=\"#\" class=\"items\">" . $row->nazwa . "</a></li>";
+                                }
+                            }
+                            else
+                            {
+                                echo "<p>Brak plików do pobrania.</p>";
+                            }
+                        }
 
 
                         ?>
