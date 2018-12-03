@@ -98,7 +98,7 @@ else
                 </div>
                 
                 <div class="column is-6">
-                    <h2 class="title">Przypisywanie użytkowników do kursów</h2>
+                    <h2 class="title">Przypisywanie użytkowników do plików</h2>
                     <table class="table is-hoverable is-striped">
                         <thead>
                         <tr>
