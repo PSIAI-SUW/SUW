@@ -1,13 +1,13 @@
 <?php
     require_once('config.php');
 
-    $id_plik = $_GET['file_id'];
-    $nazwa_plik = $_GET['file_name'];
-    $id_user = $_GET['user_id'];
-    $path = $_GET['url'];
+    $id_plik = htmlentities(stripslashes(trim($_GET['file_id'])), ENT_QUOTES);
+    $nazwa_plik = htmlentities(stripslashes(trim($_GET['file_name'])), ENT_QUOTES);
+    $id_user = htmlentities(stripslashes(trim($_GET['user_id'])), ENT_QUOTES);
+    $path = htmlentities(stripslashes(trim($_GET['url'])), ENT_QUOTES);
     $date = date('Y-m-d H:i:s');
 
-    $file_url = $path.$nazwa_plik.".pdf";
+    $file_url = $path;
 
     // statystyka
     $sql = "INSERT INTO Pobranie_Pliku (ID_Pobieranie_Pliku, data_dodania, nr_plik, nr_user) VALUES (NULL, '".$date."' , '".$id_plik."', '".$id_user."')";
