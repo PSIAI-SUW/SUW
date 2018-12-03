@@ -70,7 +70,7 @@ else
                             </tr>
                         </thead>
                         <?php
-                            $users = $db->query("SELECT * FROM users WHERE type_account = 'user'")->fetchAll(PDO::FETCH_OBJ);
+                            $users = $db->query("SELECT * FROM users WHERE type_account = 'user' ORDER BY ID_USER")->fetchAll(PDO::FETCH_OBJ);
                             foreach ($users as $row)
                             {
                                 echo "<tr>";
@@ -109,7 +109,7 @@ else
                         </thead>
                         <?php
 
-                        $kurs = $db->query("SELECT * FROM Plik")->fetchAll(PDO::FETCH_OBJ);
+                        $kurs = $db->query("SELECT * FROM Plik ORDER BY ID_Plik")->fetchAll(PDO::FETCH_OBJ);
                         foreach ($kurs as $row)
                         {
                             echo "<tr>";
@@ -129,7 +129,7 @@ else
                         </tr>
                         </thead>
                         <?php
-                        $users = $db->query("SELECT * FROM users WHERE type_account = 'user' && active = 'aktywny'")->fetchAll(PDO::FETCH_OBJ);
+                        $users = $db->query("SELECT * FROM users WHERE type_account = 'user' && active = 'aktywny' ORDER BY ID_USER")->fetchAll(PDO::FETCH_OBJ);
                         foreach ($users as $row)
                         {
                             echo "<tr>";

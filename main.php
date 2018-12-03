@@ -161,7 +161,7 @@ if(isset($_POST['deleteCourse']))
                         if(isset($_GET['ID_Kurs']))
                         {
                             $getID = htmlentities($_GET['ID_Kurs'],ENT_QUOTES);
-                            $sql = "SELECT * FROM Plik WHERE nr_kursu = $getID";
+                            $sql = "SELECT * FROM Plik WHERE nr_kursu = $getID ORDER BY ID_Plik";
                             $result = $file->getFileName($sql);
                             if(!empty($result)) {
                                 foreach ($result as $row) {
