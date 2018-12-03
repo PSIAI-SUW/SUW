@@ -157,8 +157,6 @@ if(isset($_POST['deleteCourse']))
                     <h2 class="title">Wykłady</h2>
                     <ul class="list-items">
                         <?php
-                        $sql = "SELECT * FROM Plik ORDER BY ID_Plik";
-                        $result = $file->getFileName($sql);
 
                         if(isset($_GET['ID_Kurs']))
                         {
@@ -172,7 +170,7 @@ if(isset($_POST['deleteCourse']))
                             }
                             else
                             {
-                                echo "<p>Brak plików do pobrania.</p>";
+                                echo "<p>Brak wykładów w kursie. Dodaj nowe wykłady.</p>";
                             }
                         }
 
