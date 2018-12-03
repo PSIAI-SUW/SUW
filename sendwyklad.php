@@ -34,11 +34,11 @@ if(is_uploaded_file($plik_tmp))
 
 
 	
-	$sql = "insert into `Dodanie_Pliku` (`data_dodania`, `nr_kurs`, `nr_plik` , `nr_user`) VALUES (NOW(),:nkurs, :nplik, :nuser)"; 
+	$sql = "insert into `Dodanie_Pliku` (`data_dodania`, `nr_kursu`, `nr_plik` , `nr_user`) VALUES (NOW(),:nkurs, :nplik, :nuser)";
 	
 	$stmt = $db->prepare($sql);
 	$stmt->execute(array(
-		"nkurs"=>1, 
+		"nkurs"=>2,
 		"nplik"=>($id+1), 
 		"nuser"=>$_SESSION['ID_USER'])); 
 
