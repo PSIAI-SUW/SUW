@@ -40,24 +40,26 @@ else
 <section class="section is-medium">
     <main>
         <div class="container">
+            <?php
+            if (isset($_GET['not'])){
+                echo "<div class=\"notification is-success\">";
+                if ($_GET['not'] == 1 ) echo $not[] = "Podane konto zostało usunięte!";
+                if ($_GET['not'] == 2 ) echo $not[] = "Podane konto zostało aktywowane!";
+                if ($_GET['not'] == 3 ) echo $not[] = "Podane konto zostało dezaktywowane!";
+                if ($_GET['not'] == 20 ) echo $not[] = "Poprawnie dodano";
+                echo "</div>";
+            }
+
+            if (isset($_GET['error']))
+            {
+                echo "<div class=\"notification is-danger\">";
+                if ($_GET['error'] == 10 ) echo $error[] = "Podaj poprawny nick użytkownika!";
+                echo "</div>";
+            }
+            ?>
             <div class="columns">
                 <div class="column is-6">
-                    <?php
-						if (isset($_GET['not'])){
-                            echo "<div class=\"notification is-success\">";
-							if ($_GET['not'] == 1 ) echo $not[] = "Podane konto zostało usunięte!";
-							if ($_GET['not'] == 2 ) echo $not[] = "Podane konto zostało aktywowane!"; 
-							if ($_GET['not'] == 3 ) echo $not[] = "Podane konto zostało dezaktywowane!";
-                            echo "</div>";
-                        }
-						
-						if (isset($_GET['error']))
-						{
-							echo "<div class=\"notification is-danger\">";
-							if ($_GET['error'] == 10 ) echo $error[] = "Podaj poprawny nick użytkownika!";
-							echo "</div>";
-						}
-					?>
+
                     <h2 class="title">Panel administratora</h2>
                     <table class="table is-hoverable is-striped">
                         <thead>
@@ -96,7 +98,58 @@ else
                 </div>
                 
                 <div class="column is-6">
-                    
+                    <h2 class="title">Przypisywanie użytkowników do kursów</h2>
+                    <table class="table is-hoverable is-striped">
+                        <thead>
+                        <tr>
+                            <th>ID kursu</th>
+                            <th>Nazwa kursu</th>
+                        </tr>
+                        </thead>
+                        <?php
+
+                        $kurs = $db->query("SELECT * FROM kurs")->fetchAll(PDO::FETCH_OBJ);
+                       // $users = $db->query("SELECT * FROM users WHERE type_account = 'user' && active = 'aktywny'")->fetchAll(PDO::FETCH_OBJ);
+                        foreach ($kurs as $row)
+                        {
+                            echo "<tr>";
+                            echo "<td>" . $row->ID_Kurs . "</td>";
+                            echo "<td>" . $row->nazwa . "</td>";
+                            echo "</tr>";
+
+                        }
+                        ?>
+                    </table>
+
+                    <table class="table is-hoverable is-striped">
+                        <thead>
+                        <tr>
+                            <th>ID użytkownika</th>
+                            <th>Numer indeksu użytkownika</th>
+                        </tr>
+                        </thead>
+                        <?php
+
+                        //$kurs = $db->query("SELECT * FROM kurs")->fetchAll(PDO::FETCH_OBJ);
+                        $users = $db->query("SELECT * FROM users WHERE type_account = 'user' && active = 'aktywny'")->fetchAll(PDO::FETCH_OBJ);
+                        foreach ($users as $row)
+                        {
+                            echo "<tr>";
+                            echo "<td>" . $row->ID_USER . "</td>";
+                            echo "<td>" . $row->login . "</td>";
+                            echo "</tr>";
+
+                        }
+                        ?>
+                    </table>
+
+                    <form action="forms/dostep.php" method="post" class="primary-form">
+                        <label for="dostep">Daj uprawnienia do przeglądania kursu</label>
+                        <input type="text" name="kurs" placeholder="Podaj ID kursu" class="input is-large">
+                        <input type="text" name="user" placeholder="Podaj ID użytkownika" class="input is-large">
+                        <input type="submit" value="Daj uprawnienia" name="dostepButton" class="primary-button">
+                    </form>
+
                 </div>
             </div>
         </div>
