@@ -3,7 +3,7 @@
 if(isset($_GET['ID_Kurs']))
 {
     $getID = htmlentities($_GET['ID_Kurs'],ENT_QUOTES);
-    $sql = "SELECT * FROM plik WHERE nr_kursu = $getID";
+    $sql = "SELECT * FROM Plik WHERE nr_kursu = $getID";
     $result = $file->getFileName($sql);
     if(!empty($result)) {
         foreach ($result as $row) {
