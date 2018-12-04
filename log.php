@@ -11,7 +11,7 @@
 		header('Location: index.php');
 	}
 	
-	$users = $db->query("SELECT Plik.nazwa, users.login, Pobranie_Pliku.data_dodania FROM Plik INNER JOIN Pobranie_Pliku ON Plik.ID_Plik = Pobranie_Pliku.nr_plik INNER JOIN kurs ON kurs.ID_Kurs = Pobranie_Pliku.nr_kurs INNER JOIN users ON users.ID_USER = Pobranie_Pliku.nr_user ORDER BY Pobranie_Pliku.data_dodania DESC")->fetchAll(PDO::FETCH_OBJ);
+	$users = $db->query("SELECT Plik.nazwa, users.login, Pobranie_Pliku.data_dodania, Pobranie_Pliku.ip_user FROM Plik INNER JOIN Pobranie_Pliku ON Plik.ID_Plik = Pobranie_Pliku.nr_plik INNER JOIN kurs ON kurs.ID_Kurs = Pobranie_Pliku.nr_kurs INNER JOIN users ON users.ID_USER = Pobranie_Pliku.nr_user ORDER BY Pobranie_Pliku.data_dodania DESC")->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +24,7 @@
 </head>
 
 <body>
+
 
 <header>
     <div class="container">
@@ -86,11 +87,11 @@
 								echo "<td>".$row->nazwa." </td>";
                                 echo "<td>".$row->login."</td>";
 								echo "<td>".$row->data_dodania."</td>";
+								echo "<td> ".$row->ip_user." </td>";
                                 echo "</tr>";
                             }
                         ?>
                     </table>
-				
                 
             </div>
         </div>
