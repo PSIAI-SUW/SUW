@@ -1,0 +1,70 @@
+$dark: #000000;
+$light: #ffffff;
+$primary: #1a1f9d;
+$primary-hov: #4c4fa0;
+$phone: "only screen and (max-width: 480px)";
+
+@mixin buttons {
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+body, html {
+    color: $dark;
+    background-color: $light;
+}
+a {
+    text-decoration: none;
+    color: $dark;
+}
+.logo {
+    margin-top: 10px;
+    height: 50px;
+}
+.primary-button {
+    @include buttons;
+    border-style: none;
+    color: $light;
+    background-color: $primary;
+    margin: 10px 20px;
+    text-transform: uppercase;
+    &:hover {
+        color: white;
+        background-color: $primary-hov;
+        transition: .4s;
+    }
+}
+.primary-form > label {
+    font-size: 1.6em;
+}
+.subtitle {
+    color: $dark;
+}
+.title+.subtitle {
+    margin-top: 0;
+}
+.list-items {
+    margin-bottom: 30px;
+    .items {
+        @include buttons;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        background-color: $dark;
+        color: $light;
+    }
+    a:hover {
+        color: $light;
+    }
+}
+
+.fa-cog {
+    margin-top: 10px;
+    &:hover {
+        transition: .4s;
+        color: #333333;
+    }
+}
+.fa-chevron-right {
+    margin-left: 3px;
+}
